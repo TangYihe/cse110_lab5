@@ -9,10 +9,12 @@ rangeLevelElem.addEventListener('input', adjustScroll);
 
 function adjustText(){
     rangeLevelElem.value = textLevelElem.value;
+    audioElem.volume = textLevelElem.value / 100;
     adjustVolPic();
 }
 function adjustScroll(){
     textLevelElem.value = rangeLevelElem.valueAsNumber;
+    audioElem.volume = rangeLevelElem.value / 100;
     adjustVolPic();
 }
 function adjustVolPic(){
@@ -61,18 +63,12 @@ function setParty(){
 }
 
 
-
-function setVolume(){
-    audioElem.volume = textLevelElem.value / 100;
-}
-
 //button for horn sound
 var playButtonElem = document.getElementById('honk-btn');
 playButtonElem.addEventListener("click", playSound);
 playButtonElem.type = 'button';
 
 function playSound() {
-    setVolume();
     if(audioElem.volume > 0){
         audioElem.play();
     }
